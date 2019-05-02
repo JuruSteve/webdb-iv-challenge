@@ -26,7 +26,6 @@ exports.up = function (knex, Promise) {
         .notNullable()
         .unique()
       tbl.float('quantity')
-        .nonNullable()
     })
 
     .createTable('recipe_ingredients', tbl => {
@@ -48,21 +47,7 @@ exports.up = function (knex, Promise) {
     })
     .createTable('instructions', tbl => {
       tbl.increments()
-      tbl.string('steps', 255)
-      tbl.integer('recipe_id')
-        .unsigned()
-        .notNullable()
-        .references('id')
-        .inTable('recipes')
-        .onDelete('RESTRICT')
-        .onUpdate('CASCADE')
-      tbl.integer('dish_id')
-        .unsigned()
-        .notNullable()
-        .references('id')
-        .inTable('dishes')
-        .onDelete('RESTRICT')
-        .onUpdate('CASCADE')
+      tbl.string('name', 255)
     })
 }
 
